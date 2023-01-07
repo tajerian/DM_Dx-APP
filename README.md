@@ -20,6 +20,6 @@ Run cmd
     start chrome http://127.0.0.1:8000/
 OR simply just double click on runserver.bat then double click on start.bat
 
-##app interface
+## APP interface
 
 ![enter image description here](https://github.com/tajerian/DM_Dx-APP/blob/main/UI.jpg?raw=true)
