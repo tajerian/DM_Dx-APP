@@ -1,0 +1,1 @@
+ipython manage.py runserver
