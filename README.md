@@ -21,4 +21,5 @@ Run cmd
 OR simply just double click on runserver.bat then double click on start.bat
 
 ##app interface
+
 ![enter image description here](https://github.com/tajerian/DM_Dx-APP/blob/main/UI.jpg?raw=true)
