@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>tajerian.info</title>
+    <style>
+        .btn {
+              margin-bottom: 4px !important;
+         }
+         input {          
+          margin-bottom: 4px;
+         }
+    </style>
+    {% load static %}
+</head>
+<br>
+<body>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col col-md-8">     
+          <div class="row row-cols-1 row-cols-md-1 g-2">
+            <div class="col">
+              <div class="card" style="--bs-card-cap-bg: rgba(0, 0, 0, .9)">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <!--Simple Form-->
+                    <h2 class="my-4">Add A New Case For Diabetes Risk Prediction</h2>
+                    <form class="was-validated" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-6">
+                          <input class="form-control" type="number" step="any" name="glu" placeholder="Glucose Level [mmol/L]" min="0" max="300" required>
+                          <input class="form-control" type="number" step="any" name="il" placeholder="Insulin Level [µU/ml]" min="0" max="1000" required>
+                          <input class="form-control" type="number" step="any" name="bmi" placeholder="BMI [Kg/m2]" min="10" max="50" required>
+                          <input class="form-control" type="number" step="any" name="np" placeholder="Number Of Pregnancies" min="0" max="20" required>
+                          </div>
+                          <div class="col-md-6">
+                          <input class="form-control" type="number" step="any" name="bp" placeholder="Diastolic Blood Pressure [mmHg]" min="50" max="150" required>
+                          <input class="form-control" type="number" step="any" name="age" placeholder="Age [years]" min="0" max="100" required> 
+                          <input class="form-control" type="number" step="any" name="pf" placeholder="Diabetic Pedigree Function" min="0" max="3" required> 
+                          <input class="form-control" type="number" step="any" name="st" placeholder="Triceps skin fold thickness [mm]" min="10" max="80" required>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control" name="model" id="inlineFormCustomSelectPref" required>
+                          <option value="">Chose A Model For Inference</option>
+                          <option value="1">ANN</option>
+                          <option value="2">Random Forest</option>
+                          <option value="3" disabled>XGBoost</option>
+                          <option value="4">Support Vector Machine Classifier</option>
+                          <option value="5">Decision Trees In Depth</option>
+                          <option value="6">Logestic Regression</option>
+                        </select>
+                      </div>
+                    </div>
+                    <br>                          
+                    <button class="btn btn-dark my-4" type="submit">Make Prediction</button>
+                    </form>
+                    <hr>
+                    <p class="card-text"><small class="text-muted">Co-authors: Mohsen Kazemian, Ava Akhavan malayeri</small></p>
+                  </div>
+                </div>
+              </div>
+            <div class="col">
+              <div class="card" style="--bs-card-cap-bg: rgba(0, 0, 0, .9)">
+                <div class="card-header"></div>
+                <div class="card-body">
+                  <!--See Image Uploaded-->
+                  <div class="row">
+                    <div class="col-md-6">
+                    <h2 class="my-4">Diabetes Risk</h2>
+                    </div>
+                    {% if bol %}
+                    <div class="col-md-6">
+                      <div align="right">
+                        <a class="btn btn-dark my-4" href="/">Return to Homepage</a>
+                     </div>
+                    </div>
+                    
+                    {% endif %}
+                  </div>
+                  <div class="container"> 
+                    {% if bol %}
+                   <div class="row justify-content-md-center">
+                      <center> <br>
+                      <h5><span style="color:green" ></span>This Case May Develop Diabeties With Probability Of <span style="color:green" >{{prob}}</span></h5>                      
+                      </center>
+                    </div>{% comment %}
+                    <div class="row">
+                      <div class="col-md-6">
+                        {{obj1|safe}}
+                      </div>
+                      <div class="col-md-6">
+                        {{obj3|safe}}
+                    </div> {% endcomment %}
+                    {{obj1|safe}}
+                    {{obj2|safe}}
+                    {{obj3|safe}}
+                    {{obj4|safe}}
+                    {{obj5|safe}}
+                    {{obj6|safe}}
+                    {{obj7|safe}}
+                    {{obj8|safe}}                
+                    {% else %}
+                    <p>No Case Added Yet.</p>
+                    {% endif %}
+                  </div>
+                    <hr>
+                    <img src="{% static 'Figure 5,ROC.png' %}" alt="Figure 5,ROC.png" class="img-fluid rounded-start">
+                    
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div><br>
+</body>
+</html>
+  
